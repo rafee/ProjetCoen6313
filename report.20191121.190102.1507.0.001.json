@@ -1,0 +1,513 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20191121.190102.1507.0.001.json",
+    "dumpEventTime": "2019-11-21T19:01:02Z",
+    "dumpEventTimeStamp": "1574362862787",
+    "processId": 1507,
+    "cwd": "/home/ubuntu/ProjetCoen6313",
+    "commandLine": [
+      "node",
+      "/usr/bin/ng",
+      "build",
+      "--watch"
+    ],
+    "nodejsVersion": "v13.1.0",
+    "glibcVersionRuntime": "2.27",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "13.1.0",
+      "v8": "7.8.279.17-node.19",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "79",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v13.1.0/node-v13.1.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v13.1.0/node-v13.1.0.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.15.0-1054-aws",
+    "osVersion": "#56-Ubuntu SMP Thu Nov 7 16:15:59 UTC 2019",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz",
+        "speed": 2400,
+        "user": 806800,
+        "nice": 0,
+        "sys": 92900,
+        "idle": 579700,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "eth0",
+        "internal": false,
+        "mac": "12:58:f7:d3:6b:93",
+        "address": "172.31.87.180",
+        "netmask": "255.255.240.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "eth0",
+        "internal": false,
+        "mac": "12:58:f7:d3:6b:93",
+        "address": "fe80::1058:f7ff:fed3:6b93",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 2
+      }
+    ],
+    "host": "ip-172-31-87-180"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b10715",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [ng build --watch]"
+    },
+    {
+      "pc": "0x00000000009ec1cc",
+      "symbol": "node::OnFatalError(char const*, char const*) [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000000b4611e",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000000b46499",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000000cf3535",
+      "symbol": " [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000000cf3bc6",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000000d003fa",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000000d01305",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000000d03dac",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000000cca66b",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [ng build --watch]"
+    },
+    {
+      "pc": "0x000000000100ecfc",
+      "symbol": "v8::internal::Runtime_AllocateInOldGeneration(int, unsigned long*, v8::internal::Isolate*) [ng build --watch]"
+    },
+    {
+      "pc": "0x0000000001391439",
+      "symbol": " [ng build --watch]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 525873152,
+    "totalCommittedMemory": 524396896,
+    "usedMemory": 505764296,
+    "availableMemory": 12493288,
+    "memoryLimit": 528482304,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33088,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 8388608,
+        "committedMemory": 7602328,
+        "capacity": 4189824,
+        "used": 30304,
+        "available": 4159520
+      },
+      "old_space": {
+        "memorySize": 436318208,
+        "committedMemory": 436096728,
+        "capacity": 434285440,
+        "used": 432750648,
+        "available": 1534792
+      },
+      "code_space": {
+        "memorySize": 2789376,
+        "committedMemory": 2550976,
+        "capacity": 2375680,
+        "used": 2375680,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 10752000,
+        "committedMemory": 10750960,
+        "capacity": 3514960,
+        "used": 3514960,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 66740224,
+        "committedMemory": 66740224,
+        "capacity": 66515352,
+        "used": 66515352,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 544544,
+        "used": 544544,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 4189824,
+        "used": 0,
+        "available": 4189824
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 45.413,
+    "kernelCpuSeconds": 1.31535,
+    "cpuConsumptionPercent": 89.8623,
+    "maxRss": 659992576,
+    "pageFaults": {
+      "IORequired": 65,
+      "IONotRequired": 310875
+    },
+    "fsActivity": {
+      "reads": 232488,
+      "writes": 0
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 22.3969,
+    "kernelCpuSeconds": 1.0237,
+    "cpuConsumptionPercent": 45.0397,
+    "fsActivity": {
+      "reads": 218024,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "SUDO_GID": "1000",
+    "npm_package_devDependencies__angular_language_service": "7.2.4",
+    "npm_package_devDependencies__types_node": "11.9.0",
+    "npm_package_devDependencies_ts_node": "8.0.2",
+    "npm_package_devDependencies_tslint": "5.12.1",
+    "npm_config_cache_lock_stale": "60000",
+    "npm_config_ham_it_up": "",
+    "npm_package_dependencies__angular_animations": "7.2.4",
+    "npm_config_legacy_bundling": "",
+    "npm_config_sign_git_tag": "",
+    "MAIL": "/var/mail/root",
+    "USER": "root",
+    "npm_package_dependencies__progress_kendo_angular_popup": "^3.0.1",
+    "npm_package_dependencies_node_sass": "^4.13.0",
+    "npm_package_devDependencies_karma_coverage_istanbul_reporter": "2.0.4",
+    "npm_config_user_agent": "npm/6.12.1 node/v13.1.0 linux x64",
+    "npm_config_always_auth": "",
+    "npm_config_bin_links": "true",
+    "npm_config_key": "",
+    "npm_package_dependencies__angular_common": "7.2.4",
+    "npm_config_description": "true",
+    "npm_config_fetch_retries": "2",
+    "npm_config_heading": "npm",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_user": "1000",
+    "npm_config_allow_same_version": "",
+    "npm_config_if_present": "",
+    "npm_node_execpath": "/usr/bin/node",
+    "npm_package_dependencies_rxjs": "^6.4.0",
+    "npm_package_devDependencies__types_jasminewd2": "2.0.6",
+    "npm_package_devDependencies_protractor": "5.4.2",
+    "npm_config_prefer_online": "",
+    "npm_config_noproxy": "",
+    "HOME": "/home/ubuntu",
+    "npm_package_dependencies__agm_core": "^1.0.0",
+    "npm_package_dependencies_chart_js": "2.7.3",
+    "npm_config_force": "",
+    "npm_package_scripts_server": "nodemon ./bin/www",
+    "npm_package_dependencies__angular_material": "^7.3.7",
+    "npm_config_only": "",
+    "npm_config_read_only": "",
+    "npm_package_dependencies_express_promise_router": "^3.0.3",
+    "npm_package_devDependencies_jasmine_core": "3.3.0",
+    "npm_config_cache_min": "10",
+    "npm_config_init_license": "ISC",
+    "npm_package_dependencies__progress_kendo_angular_common": "^1.1.0",
+    "npm_package_dependencies_highcharts_angular": "^2.4.0",
+    "npm_package_devDependencies__types_jasmine": "3.3.8",
+    "npm_config_editor": "vi",
+    "npm_config_rollback": "true",
+    "npm_config_tag_version_prefix": "v",
+    "npm_package_devDependencies_karma": "4.0.0",
+    "npm_config_cache_max": "Infinity",
+    "npm_config_userconfig": "/home/ubuntu/.npmrc",
+    "npm_config_timing": "",
+    "npm_package_devDependencies__angular_compiler_cli": "7.2.4",
+    "npm_package_devDependencies_karma_chrome_launcher": "2.2.0",
+    "npm_config_tmp": "/tmp",
+    "npm_config_engine_strict": "",
+    "npm_config_init_author_name": "",
+    "npm_config_init_author_url": "",
+    "npm_config_preid": "",
+    "npm_package_dependencies__angular_cdk": "~7.3.7",
+    "npm_package_dependencies_nouislider": "13.1.1",
+    "npm_package_devDependencies_typescript": "3.2.4",
+    "npm_package_description": "",
+    "npm_config_depth": "Infinity",
+    "npm_config_package_lock_only": "",
+    "npm_config_save_dev": "",
+    "npm_config_usage": "",
+    "npm_package_devDependencies_jasmine_spec_reporter": "4.2.1",
+    "npm_package_readmeFilename": "README.md",
+    "npm_config_metrics_registry": "https://registry.npmjs.org/",
+    "npm_config_package_lock": "true",
+    "npm_config_progress": "true",
+    "npm_config_cafile": "",
+    "npm_config_otp": "",
+    "npm_config_https_proxy": "",
+    "npm_config_save_prod": "",
+    "SUDO_UID": "1000",
+    "npm_package_dependencies__angular_core": "7.2.4",
+    "npm_config_audit": "true",
+    "npm_config_sso_type": "oauth",
+    "npm_config_cidr": "",
+    "npm_config_onload_script": "",
+    "LOGNAME": "root",
+    "npm_package_dependencies_hammerjs": "^2.0.8",
+    "npm_config_rebuild_bundle": "true",
+    "npm_config_shell": "/bin/bash",
+    "npm_config_save_bundle": "",
+    "npm_package_private": "true",
+    "npm_package_dependencies__angular_platform_browser_dynamic": "7.2.4",
+    "npm_config_format_package_lock": "true",
+    "npm_config_prefix": "/usr",
+    "npm_config_dry_run": "",
+    "npm_package_scripts_lint": "ng lint",
+    "npm_config_scope": "",
+    "npm_config_cache_lock_wait": "10000",
+    "npm_config_registry": "https://registry.npmjs.org/",
+    "npm_config_browser": "",
+    "npm_config_ignore_prepublish": "",
+    "npm_config_save_optional": "",
+    "npm_config_searchopts": "",
+    "npm_config_versions": "",
+    "TERM": "xterm",
+    "USERNAME": "root",
+    "npm_package_dependencies_core_js": "2.6.4",
+    "npm_package_devDependencies_karma_jasmine_html_reporter": "1.4.0",
+    "npm_config_cache": "/home/ubuntu/.npm",
+    "npm_config_proxy": "",
+    "npm_config_send_metrics": "",
+    "npm_package_scripts_start": "npm-run-all -p client server",
+    "npm_package_dependencies__angular_compiler": "7.2.4",
+    "npm_package_dependencies_mongodb": "^3.3.4",
+    "npm_config_global_style": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_version": "",
+    "npm_package_dependencies_angular2_highcharts": "^0.5.5",
+    "npm_package_dependencies_axios": "^0.19.0",
+    "npm_config_viewer": "man",
+    "npm_config_node_gyp": "/usr/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js",
+    "npm_config_local_address": "",
+    "PATH": "/usr/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/ubuntu/ProjetCoen6313/node_modules/.bin:/usr/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/ubuntu/ProjetCoen6313/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin",
+    "NODE": "/usr/bin/node",
+    "npm_package_name": "argon-dashboard-angular",
+    "npm_config_audit_level": "low",
+    "npm_config_prefer_offline": "",
+    "npm_package_scripts_client": "ng build --watch",
+    "npm_config_color": "true",
+    "npm_config_sign_git_commit": "",
+    "npm_package_dependencies__angular_forms": "7.2.4",
+    "npm_package_dependencies_ngx_toastr": "9.1.2",
+    "npm_config_fetch_retry_mintimeout": "10000",
+    "npm_config_maxsockets": "50",
+    "npm_config_sso_poll_frequency": "500",
+    "npm_config_offline": "",
+    "LANG": "C.UTF-8",
+    "npm_config_umask": "0022",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+    "npm_package_scripts_ng": "ng",
+    "npm_package_scripts_e2e": "ng e2e --proxy-config proxy.config.json",
+    "npm_package_dependencies_ngx_clipboard": "11.1.9",
+    "npm_config_fetch_retry_maxtimeout": "60000",
+    "npm_config_loglevel": "notice",
+    "npm_config_logs_max": "10",
+    "npm_config_message": "%s",
+    "npm_lifecycle_script": "ng build --watch",
+    "SUDO_COMMAND": "/usr/bin/npm start",
+    "npm_package_scripts_test": "ng test",
+    "npm_package_dependencies_clipboard": "2.0.4",
+    "npm_package_dependencies_highcharts": "^7.2.1",
+    "npm_config_ca": "",
+    "npm_config_cert": "",
+    "npm_config_global": "",
+    "npm_config_link": "",
+    "SHELL": "/bin/bash",
+    "npm_package_version": "1.0.1",
+    "npm_config_save": "true",
+    "npm_config_unicode": "true",
+    "npm_config_access": "",
+    "npm_config_also": "",
+    "npm_lifecycle_event": "client",
+    "npm_package_scripts_build": "ng build",
+    "npm_package_dependencies__angular_router": "7.2.4",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"client\"],\"original\":[\"run\",\"client\"]}",
+    "npm_config_searchlimit": "20",
+    "npm_config_update_notifier": "true",
+    "npm_config_before": "",
+    "npm_config_long": "",
+    "npm_config_production": "",
+    "npm_config_unsafe_perm": "",
+    "SUDO_USER": "ubuntu",
+    "npm_package_devDependencies_karma_jasmine": "2.0.1",
+    "npm_config_auth_type": "legacy",
+    "npm_config_node_version": "13.1.0",
+    "npm_config_tag": "latest",
+    "npm_config_git_tag_version": "true",
+    "npm_config_commit_hooks": "true",
+    "npm_config_shrinkwrap": "true",
+    "npm_config_script_shell": "",
+    "npm_package_dependencies_mongoose": "^5.7.10",
+    "npm_config_fetch_retry_factor": "10",
+    "npm_config_strict_ssl": "true",
+    "npm_config_save_exact": "",
+    "npm_package_dependencies_ng2_opd_popup": "^1.1.21",
+    "npm_package_devDependencies__angular_cli": "7.3.1",
+    "npm_config_globalconfig": "/usr/etc/npmrc",
+    "npm_config_init_module": "/home/ubuntu/.npm-init.js",
+    "npm_config_dev": "",
+    "npm_config_parseable": "",
+    "PWD": "/home/ubuntu/ProjetCoen6313",
+    "npm_package_dependencies_bootstrap": "4.1.3",
+    "npm_config_globalignorefile": "/usr/etc/npmignore",
+    "npm_execpath": "/usr/lib/node_modules/npm/bin/npm-cli.js",
+    "npm_package_devDependencies_codelyzer": "4.5.0",
+    "npm_config_cache_lock_retries": "10",
+    "npm_config_searchstaleness": "900",
+    "npm_package_dependencies__ng_bootstrap_ng_bootstrap": "4.0.1",
+    "npm_config_save_prefix": "^",
+    "npm_config_scripts_prepend_node_path": "warn-only",
+    "npm_config_node_options": "",
+    "npm_config_group": "1000",
+    "npm_config_init_author_email": "",
+    "npm_config_searchexclude": "",
+    "npm_package_dependencies__angular_http": "7.2.4",
+    "npm_package_dependencies_zone_js": "0.8.29",
+    "npm_package_devDependencies__angular_devkit_build_angular": "^0.13.1",
+    "npm_package_devDependencies_npm_run_all": "^4.1.5",
+    "npm_config_git": "git",
+    "npm_config_optional": "true",
+    "INIT_CWD": "/home/ubuntu/ProjetCoen6313",
+    "npm_package_dependencies__angular_platform_browser": "7.2.4",
+    "npm_config_json": ""
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 16777216,
+      "hard": 16777216
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 3841,
+      "hard": 3841
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/home/ubuntu/ProjetCoen6313/node_modules/node-sass/vendor/linux-x64-79/binding.node"
+  ]
+}

@@ -1,0 +1,43 @@
+const mongoose = require ('mongoose');
+
+const Doctor=require('./Doctor');
+const data=require('./data');
+const PatientSchema = mongoose.Schema({
+
+        Id : String,
+        Name: String,
+        Medecines : String,
+        Conditions : String,
+        PredictedDisease:String,
+       /* Thyroid:{
+
+        },*/
+        Age:Number,
+        Sexe:String,
+
+        data : [{
+
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'data'
+           
+        }],
+        AddressP :{
+          latitude:Number,
+          longitude:Number
+      },
+        consultBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Doctor'
+          }
+	on_thyroxine
+	 query_on_thyroxine
+	 on_antithyroid_medication 
+	thyroid_surgery
+	 query_hypothyroid 
+	query_hyperthyroid 
+	pregnant
+	 sick 
+ tumor lithium 
+goitre TSH_measured T3_measured TT4_measured T4U_measured FTI_measured 
+age sex TSH T3 TT4 T4U
+FTI

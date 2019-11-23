@@ -1,0 +1,10 @@
+{
+  "/posts": {
+    "target": "https://6tr8ub2tq1.execute-api.us-east-2.amazonaws.com",
+    "secure": true,
+    "pathRewrite": {
+    "^/posts": ""
+  },
+    "changeOrigin": true
+  }
+}

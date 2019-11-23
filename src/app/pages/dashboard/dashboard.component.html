@@ -1,0 +1,117 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+     
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow border-0">
+       
+          <agm-map  [zoom]="16" [latitude]="lat" [longitude]="lng">
+            <agm-marker (markerClick)="UpdatePatients()"  *ngFor="let patient of patients" [latitude]="patient.AddressP.latitude" [longitude]="patient.AddressP.longitude" [iconUrl]="'./assets/img/icons/patient.png'"  >
+          
+          <agm-info-window  >
+
+              <h4 style="text-align:center"><strong> Patient Info</strong> </h4>
+
+              <div class="container">
+
+              
+                  <div class="modal-body">
+                    <div><strong>Id:</strong>  {{patient.Id}}</div>
+                    
+                    <div><strong>Name:</strong>   {{patient.Name}}</div>
+                    
+                    <div><strong>Condition:</strong>   {{patient.Conditions}}</div>
+                    
+	               <div ><strong>Patient Data:</strong> 
+			
+
+                      <div *ngIf="patient.data[patient.data.length-1].steps===0; then thenBlock else elseBlock"> </div>
+
+                     
+                      <ng-template  #thenBlock>
+                        
+                        
+                       <div><strong>Number of steps :</strong>  Not defined  /2000</div>
+                       <div><strong>Sleeping Hours :</strong>  Not defined  /8</div>
+                      
+                      
+                      
+                      </ng-template>
+                      
+                     
+                      
+                      
+                      <ng-template #elseBlock>
+                         
+                          <div><strong>Number of steps :</strong>  {{patient.data[patient.data.length-1].steps}} /2000</div>
+                          <div><strong>Sleeping Hours :</strong>  {{patient.data[patient.data.length-1].sleepingHours}} /8</div>
+                        
+              
+                      </ng-template>
+                      </div>
+                  
+                  </div>
+                  <div class="modal-footer">
+                    <button (click)="Navigate(patient._id)" style="text-align:center" type="button" class="btn btn-info">Data Graph </button>
+                  </div>
+
+
+               
+              </div>
+
+
+
+
+
+            </agm-info-window>
+          </agm-marker>
+          </agm-map>
+
+        
+            
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Emergency</th>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Description</th>
+                   
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Action</th>
+                   
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th>Heart rate</th>
+                  <td>Patrick</td>
+                  
+                  <td>High </td>
+                 
+                  <td></td>
+                  <td></td>
+                  <td><button type="button" class="btn btn-success">Acquit </button> </td>
+    
+                </tr>
+                </tbody>
+               </table>
+               
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

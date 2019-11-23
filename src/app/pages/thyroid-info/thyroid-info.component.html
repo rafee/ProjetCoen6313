@@ -1,0 +1,158 @@
+
+ <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+
+            <tr>
+                    <td scope="col">On_thyroxine</td> <td>{{patient.on_thyroxine}} </td>
+
+	   </tr>
+
+		  <tr>
+                    <td scope="col">Query_On_thyroxine</td> <td>{{patient.query_on_thyroxine}}</td>
+
+           </tr>
+
+	  <tr>
+                    <td scope="col">On_antithyroid_medication</td> <td> {{patient.on_antithyroid_medication}}</td>
+
+           </tr>
+
+ 	 <tr>
+                    <td scope="col">Thyroid_surgery</td> <td>{{patient.thyroid_surgery}} </td>
+
+           </tr>
+
+ 	   <tr>
+                    <td scope="col">Query_Hypothyroid</td> <td>{{patient.query_hypothyroid}} </td>
+
+           </tr>
+
+  	 <tr>
+                    <td scope="col">Query_Hyperthyroid</td> <td>{{patient.query_hyperthyroid}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">Pregnant</td> <td>{{patient.pregnant}} </td>
+
+           </tr>
+
+ 	 <tr>
+                    <td scope="col">Sick</td> <td>{{patient.sick}} </td>
+
+           </tr>
+
+ 	 <tr>
+                    <td scope="col">Tumor</td> <td> {{patient.tumor}}</td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">Lithium</td> <td>{{patient.lithium}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">Goitre</td> <td> {{patient.goitre}}</td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">TSH_Measured</td> <td>{{patient.TSH_measured}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">T3_Measured</td> <td>{{patient.T3_measured}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">TT4_Measured</td> <td> {{patient.TT4_measured}}</td>
+
+           </tr>
+
+  	   <tr>
+                    <td scope="col">T4U_Measured</td> <td>{{patient.T4U_measured}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">FTI_Measured</td> <td>{{patient.FTI_measured}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">Age</td> <td>{{patient.age}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">Sex</td> <td>{{patient.sex}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">TSH</td> <td>{{patient.TSH}} </td>
+
+           </tr>
+
+ 	 <tr>
+                    <td scope="col">T3</td> <td>{{patient.T3}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">TT4</td> <td>{{patient.TT4}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">T4U</td> <td>{{patient.T4U}} </td>
+
+           </tr>
+
+  	<tr>
+                    <td scope="col">FTI</td> <td> {{patient.FTI}}</td>
+
+           </tr>
+
+               
+           
+
+
+
+               </table>
+
+              <button (click)="CheckThyroid(patient._id)"  type="button" class="btn btn-info">Check Thyroid </button>
+
+
+
+</div>
+
+    <div *ngIf="verif===1; then thenBlock"> </div>
+
+                     
+                      <ng-template  #thenBlock>
+                        
+                        <div><strong>According to the information mentioned above, this patient has the Thyroid Disease </strong> </div>
+                     
+                      
+                      
+                      
+                      </ng-template>
+                      
+                     
+                      
+                      
+                 <div *ngIf="verif===0; then thenBlock2"> </div>
+
+                     
+                      <ng-template  #thenBlock2>
+                        
+                        <div><strong>According to the information mentioned above, this patient doesn't have the Thyroid Disease </strong> </div>
+                     
+                      
+                      
+                      
+                      </ng-template>
