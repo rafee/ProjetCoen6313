@@ -35,10 +35,14 @@ export class GraphDataComponent implements OnInit {
 	datas:any;
 
     dataGraph=[];
+	SleepingHoursGraph=[];
 	
-	BarChart=[];
+	BarChartSteps=[];
+	BarChartSleepingHours=[];
 	
 	dateLabels=[];
+	
+	date:any;
 	
 	res:any;
 	
@@ -116,20 +120,32 @@ export class GraphDataComponent implements OnInit {
 
 
     this.exId.currentMessage.subscribe(message => this.id = message);
-this.http.get('/doctors/'+this.id+'/patients/'+this.patientId['patientId']+'/data').subscribe(data => {
+//this.http.get('/doctors/'+this.id+'/patients/'+this.patientId['patientId']+'/data').subscribe(data => {
   // x: Date.parse(data[0]['createdAt']),
   //y: data[0]['value']};
+  
+  this.http.get('/doctors/datas/'+this.patientId['patientId']).subscribe(data => {
 console.log(data);
 
-  this.data=data['data']
+  this.data=data
   console.log(this.data);
   for (var i=0; i < Object.keys(this.data).length ;i++) {
 
   console.log(this.data[i]['steps']);
   
+  //  this.date=(this.data[i]['date']).toString();
+  
+ // console.log(this.date.substr(0,9));
  // this.graph.push(this.data[i]['createdAt'], this.data[i]['value']);
-   this.dateLabels.push((this.data[i]['date']));
+ //  this.dateLabels.push((this.date.substr(0,10)));
+   
+ // console.log((this.data[i]['date']));
+  
+
+  this.dateLabels.push((this.data[i]['date']));
+ //console.log(extractedDate);
    this.dataGraph.push(this.data[i]['steps']);
+   this.SleepingHoursGraph.push(this.data[i]['sleepingHours']);
   // console.log(this.dataGraph)
   
    
@@ -138,6 +154,7 @@ console.log(data);
   //this.dataGraph=[1200,2200,3000];
   
   console.log(this.dataGraph);
+  console.log(this.SleepingHoursGraph);
 //});
 //console.log(this.dataGraph);
  // this.renderChart();
@@ -211,35 +228,80 @@ console.log(data);
 
   }
   */
-  this.BarChart = new Chart('barChart', {
+  
+  
+
+  this.BarChartSteps = new Chart('barChartSteps', {
   type: 'bar',
 	data: {
  labels: this.dateLabels,
- datasets: [{
-     label: 'Steps by day',
+ /*datasets: [{
+     label: 'Steps',
      data: this.dataGraph,
-     backgroundColor: [
-         'rgba(255, 99, 132, 0.2)',
-         'rgba(54, 162, 235, 0.2)',
-         'rgba(255, 206, 86, 0.2)',
-         'rgba(75, 192, 192, 0.2)',
-         'rgba(153, 102, 255, 0.2)',
-         'rgba(255, 159, 64, 0.2)'
-     ],
-     borderColor: [
-         'rgba(255,99,132,1)',
-         'rgba(54, 162, 235, 1)',
-         'rgba(255, 206, 86, 1)',
-         'rgba(75, 192, 192, 1)',
-         'rgba(153, 102, 255, 1)',
-         'rgba(255, 159, 64, 1)'
-     ],
-     borderWidth: 1
- }]
+     backgroundColor: "blue",
+     
+ },
+  
+ {
+     label: 'Sleeping Hours',
+     data: this.SleepingHoursGraph,
+     backgroundColor:"red",
+
+	 type:'bar'
+ }]*/
+ 
+ datasets: [{
+    label: "Steps",
+    backgroundColor:  'rgba(153, 102, 255, 0.2)',
+	
+    data: this.dataGraph
+  }]
 }, 
 options: {
  title:{
-     text:"Bar Chart",
+     text:"Graph Data of The Patient",
+     display:true
+ },
+ scales: {
+     yAxes: [{
+         ticks: {
+             beginAtZero:true
+         }
+     }]
+ }
+}
+});
+
+
+  this.BarChartSleepingHours = new Chart('barChartSleepingHours', {
+  type: 'bar',
+	data: {
+ labels: this.dateLabels,
+ /*datasets: [{
+     label: 'Steps',
+     data: this.dataGraph,
+     backgroundColor: "blue",
+     
+ },
+  
+ {
+     label: 'Sleeping Hours',
+     data: this.SleepingHoursGraph,
+     backgroundColor:"red",
+
+	 type:'bar'
+ }]*/
+ 
+ datasets: [{
+    label: "Sleeping Hours",
+    backgroundColor:  'rgba(75, 192, 192, 0.2)',
+	
+    data: this.SleepingHoursGraph
+  }]
+}, 
+options: {
+ title:{
+   
      display:true
  },
  scales: {

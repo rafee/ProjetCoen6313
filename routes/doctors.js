@@ -21,6 +21,11 @@ router.route('/')
 
 router.route('/predictions/:patientId')
   .get(DoctorsController.getPredictions);
+  
+  
+  
+  router.route('/datas/:patientId')
+  .get(DoctorsController.getPatientDataExternal);
 
 
 

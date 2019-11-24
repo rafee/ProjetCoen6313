@@ -141,9 +141,41 @@ newDoctor: async(req,res,next) => {
 
   getPatientData: async(req,res,next) => {
     const {patientId}=req.params;
+	
+	
   //  const {doctorId}=req.params;
     const patient= await Patient.findById(patientId).populate('data').select('data -_id').exec();
     res.status(200).json(patient);
+
+},
+
+  getPatientDataExternal: async(req,res,next) => {
+    const {patientId}=req.params;
+ axios.get('https://c7trbjve0a.execute-api.us-east-1.amazonaws.com/v1/datas/'+patientId)
+.then((data) => {
+	
+//	var label=data['data'];
+//	var predictions=label['predictions'];
+//	var predic=predictions[0];
+//	var predictedLabel=predic['predicted_label'];
+  //console.log(`statusCode: ${res.data}`)
+  console.log(data);
+  	//console.log(predic['predicted_label'])
+	res.status(200).json(data['data']);
+
+ 
+  
+  
+  
+})
+.catch((error) => {
+  console.error(error)
+})
+
+	
+  //  const {doctorId}=req.params;
+    
+  //  res.status(200).json(patient);
 
 },
   
