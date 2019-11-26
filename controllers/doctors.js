@@ -30,10 +30,7 @@ getPredictions: async(req,res,next) => {
 	
 console.log(patiInfo);
 //console.log('hello');
-   axios.post('https://6tr8ub2tq1.execute-api.us-east-2.amazonaws.com/Test/predictthyroid', {
-	"data":patInfo
-})
-.then((data) => {
+   axios.get('https://6tr8ub2tq1.execute-api.us-east-2.amazonaws.com/Test/predict?data='+patInfo).then((data) => {
 	
 	var label=data['data'];
 	var predictions=label['predictions'];

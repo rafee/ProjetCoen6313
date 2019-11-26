@@ -13,8 +13,9 @@
       <div class="card shadow border-0">
        
           <agm-map  [zoom]="16" [latitude]="lat" [longitude]="lng">
-            <agm-marker (markerClick)="UpdatePatients(patient._id)"  *ngFor="let patient of patients" [latitude]="patient.AddressP.latitude" [longitude]="patient.AddressP.longitude" [iconUrl]="'./assets/img/icons/patient.png'"  >
-          
+           <agm-marker (markerClick)="UpdatePatients(patient._id)"  *ngFor="let patient of patients" [latitude]="patient.AddressP.latitude" [longitude]="patient.AddressP.longitude" [iconUrl]="'./assets/img/icons/patient.png'" >
+		 
+         
           <agm-info-window  >
 
               <h4 style="text-align:center"><strong> Patient Info</strong> </h4>
@@ -32,29 +33,29 @@
 	               <div ><strong>Patient Data:</strong> 
 			
 
-                      <div *ngIf="pat.data[pat.data.length-1].steps===0; then thenBlock else elseBlock"> </div>
+                      <!-- <div *ngIf="patiData[patiData.length-1].steps===0; then thenBlock else elseBlock"> </div> -->
 
                      
-                      <ng-template  #thenBlock>
+                      <!-- <ng-template  #thenBlock> -->
                         
                         
-                       <div><strong>Number of steps :</strong>  Not defined  <strong>/2000</strong></div>
-                       <div><strong>Sleeping Hours :</strong>  Not defined  <strong>/8</strong></div>
+                       <!-- <div><strong>Number of steps :</strong>  Not defined  <strong>/2000</strong></div> -->
+                       <!-- <div><strong>Sleeping Hours :</strong>  Not defined  <strong>/8</strong></div> -->
                       
                       
                       
-                      </ng-template>
+                      <!-- </ng-template> -->
                       
                      
                       
                       
-                      <ng-template #elseBlock>
+                      <!-- <ng-template #elseBlock> -->
                          
-                          <div><strong>Number of steps :</strong>  {{patient.data[patient.data.length-1].steps}} <strong>/2000</strong></div>
-                          <div><strong>Sleeping Hours :</strong>  {{patient.data[patient.data.length-1].sleepingHours}} <strong>/8</strong></div>
+                          <div><strong>Number of steps :</strong>  {{patiData[patiData.length-1].steps}} <strong>/2000</strong></div>
+                          <div><strong>Sleeping Hours :</strong>  {{patiData[patiData.length-1].sleepingHours}} <strong>/8</strong></div>
                         
               
-                      </ng-template>
+                      <!-- </ng-template> -->
                       </div>
                   
                   </div>
@@ -72,6 +73,9 @@
 
             </agm-info-window>
           </agm-marker>
+		  
+		    <agm-marker *ngIf="ThereIsEmergency===true;" [latitude]="patientLocation.latitude" [longitude]="patientLocation.longitude"  [iconUrl]="'./assets/img/icons/emergency.png'"> 	</agm-marker>
+		
           </agm-map>
 
         
@@ -97,7 +101,7 @@
                   <th>{{msgsEmer.name}}</th>
                   <td>
 				  
-				   <div *ngIf="msgsEmer.heartrate>=100; then thenBlock3 else elseBlock3"> </div>
+				   <div *ngIf="msgsEmer.heartrate>=100; then thenBlock3 "> </div>
 
                      
                       <ng-template  #thenBlock3>
@@ -113,13 +117,32 @@
                      
                       
                       
-                      <ng-template #elseBlock3>
-                         
-                          
-                          <div> Low HearRate: {{msgsEmer.heartrate}}  bpm  </div>
+                     <div *ngIf="msgsEmer.heartrate<=55; then thenBlock4 "> </div>
+
+                     
+                      <ng-template  #thenBlock4>
                         
-              
+                        
+                       <div>  Low Heartrate : {{msgsEmer.heartrate}}  bpm</div>
+                      
+                      
+                      
+                      
                       </ng-template>
+					  
+					  <div *ngIf="msgsEmer.heartrate>55 && msgsEmer.heartrate<100 ; then thenBlock5 "> </div>
+
+                     
+                      <ng-template  #thenBlock5>
+                        
+                        
+                       <div>  Normal Heartrate : {{msgsEmer.heartrate}}  bpm</div>
+                      
+                      
+                      
+                      
+                      </ng-template>
+				  
 				  
 				  
 				  

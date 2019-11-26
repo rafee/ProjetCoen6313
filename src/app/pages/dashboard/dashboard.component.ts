@@ -57,10 +57,13 @@ export class DashboardComponent implements OnInit, OnDestroy  {
 	msgHeart:any;
 	msgsEmergencies=[];
 	jsonMessage:any;
+	ThereIsEmergency:boolean;
 	pat:any;
   title = 'My first AGM project';
-  lat = 45.4586567;
-  lng = -73.641781218;
+  lat = 45.494927;
+  lng = -73.580304;
+  
+  patiData:any;
 
   constructor(private exId: ExchangeIdService, public dialog: MatDialog, private router: Router, private route: ActivatedRoute, private http: HttpClient, private _mqttService: MqttService) {
 
@@ -79,7 +82,7 @@ export class DashboardComponent implements OnInit, OnDestroy  {
 		this.patientName=this.jsonMessage['name'];
 		this.patientHeartRate=this.jsonMessage['heartrate'];
 		this.patientLocation=this.jsonMessage['location'];
-		
+		this.ThereIsEmergency=true;
 		if(this.patientHeartRate>=95){
 			
 			this.msgHeart='High heartrate :'+this.patientHeartRate+'bpm';
@@ -147,6 +150,13 @@ export class DashboardComponent implements OnInit, OnDestroy  {
 			"sleepingHours":0
 		}]
 	};
+	
+	  this.patiData=[{
+		
+			"steps":0,
+			"sleepingHours":0
+		}];
+	this.ThereIsEmergency=false;
     
   }
 
@@ -189,6 +199,11 @@ UpdatePatients(id_Pat){
     this.http.get('/doctors/'+id+'/patients/'+id_Pat).subscribe(data => {
       this.pat=data;
 	  console.log(this.pat);
+    });
+	
+	   this.http.get('/doctors/datas/'+id_Pat).subscribe(data => {
+      this.patiData=data;
+	  console.log(this.patiData);
     });
 	
 
