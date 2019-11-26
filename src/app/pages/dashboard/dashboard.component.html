@@ -13,7 +13,7 @@
       <div class="card shadow border-0">
        
           <agm-map  [zoom]="16" [latitude]="lat" [longitude]="lng">
-            <agm-marker (markerClick)="UpdatePatients()"  *ngFor="let patient of patients" [latitude]="patient.AddressP.latitude" [longitude]="patient.AddressP.longitude" [iconUrl]="'./assets/img/icons/patient.png'"  >
+            <agm-marker (markerClick)="UpdatePatients(patient._id)"  *ngFor="let patient of patients" [latitude]="patient.AddressP.latitude" [longitude]="patient.AddressP.longitude" [iconUrl]="'./assets/img/icons/patient.png'"  >
           
           <agm-info-window  >
 
@@ -23,16 +23,16 @@
 
               
                   <div class="modal-body">
-                    <div><strong>Id:</strong>  {{patient.Id}}</div>
+                    <div><strong>Id:</strong>  {{pat.Id}}</div>
                     
-                    <div><strong>Name:</strong>   {{patient.Name}}</div>
+                    <div><strong>Name:</strong>   {{pat.Name}}</div>
                     
-                    <div><strong>Condition:</strong>   {{patient.Conditions}}</div>
+                    <div><strong>Condition:</strong>   {{pat.Conditions}}</div>
                     
 	               <div ><strong>Patient Data:</strong> 
 			
 
-                      <div *ngIf="patient.data[patient.data.length-1].steps===0; then thenBlock else elseBlock"> </div>
+                      <div *ngIf="pat.data[pat.data.length-1].steps===0; then thenBlock else elseBlock"> </div>
 
                      
                       <ng-template  #thenBlock>

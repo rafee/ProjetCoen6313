@@ -78,7 +78,36 @@ client.on('connect', function () {
    // const doctor= await newDoctor.save();
    
    
-    
+    var nodemailer = require('nodemailer');
+	
+	
+	
+var transporter = nodemailer.createTransport({
+  service: 'smtp.gmail.com',
+  port:465,
+  secure: true,
+            auth: {
+              user: 'chamseddine96@gmail.com',
+              pass: 'fadjbxodgpmbwemg'
+            }
+});
+
+var mailOptions = {
+  from: 'chamseddine96@gmail.com',
+  to: 'chamseddine96@gmail.com',
+  subject: 'Emergency',
+  text: 'tessst'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+	
+	
   
   },
   

@@ -57,6 +57,7 @@ export class DashboardComponent implements OnInit, OnDestroy  {
 	msgHeart:any;
 	msgsEmergencies=[];
 	jsonMessage:any;
+	pat:any;
   title = 'My first AGM project';
   lat = 45.4586567;
   lng = -73.641781218;
@@ -140,7 +141,12 @@ export class DashboardComponent implements OnInit, OnDestroy  {
       console.log(this.doctor);
     });
    
-   
+   this.pat={
+		"data":[{
+			"steps":0,
+			"sleepingHours":0
+		}]
+	};
     
   }
 
@@ -168,7 +174,23 @@ export class DashboardComponent implements OnInit, OnDestroy  {
     });
   }
 
-UpdatePatients(){
+UpdatePatients(id_Pat){
+	
+	console.log(id_Pat);
+	let id=this.route.snapshot.params['id'];
+
+    if(id==null){
+      this.exId.currentMessage.subscribe(message => id = message);
+
+    }
+
+    this.exId.changeMessage(id);
+
+    this.http.get('/doctors/'+id+'/patients/'+id_Pat).subscribe(data => {
+      this.pat=data;
+	  console.log(this.pat);
+    });
+	
 
 
 }
