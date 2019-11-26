@@ -2,7 +2,8 @@ const Doctor=require('../models/Doctor');
 const Patient=require('../models/Patient');
 const Data=require('../models/data');
 const mongoose =require('mongoose');
-const axios = require('axios')
+const axios = require('axios');
+
 const ObjectId = mongoose.Types.ObjectId;
 
 module.exports ={
@@ -52,6 +53,35 @@ console.log(patiInfo);
 })
 
   },
+  
+  
+  SendEmergencyNotification: async(req,res,next) => {
+
+ 
+const mqtt=require('mqtt');
+const client=mqtt.connect('mqtt://broker.hivemq.com:1883');
+  msg=req.body;
+  console.log(msg);
+  position=msg['location'];
+client.on('connect', function () {
+
+// client.publish('healthcare/emergencies','{Name:'+msg['name']+'  Heart Rate:'+msg['heartrate']+'  Location:{Latitude:'+position['latitude']+',Longitude:'+position['longitude']+'}')
+
+ client.publish('healthcare/emergencies',JSON.stringify(msg))
+
+       
+  })
+
+
+
+   res.status(201).json("emergency");
+   // const doctor= await newDoctor.save();
+   
+   
+    
+  
+  },
+  
 
 newDoctor: async(req,res,next) => {
 

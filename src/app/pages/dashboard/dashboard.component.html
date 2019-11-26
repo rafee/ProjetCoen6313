@@ -38,8 +38,8 @@
                       <ng-template  #thenBlock>
                         
                         
-                       <div><strong>Number of steps :</strong>  Not defined  /2000</div>
-                       <div><strong>Sleeping Hours :</strong>  Not defined  /8</div>
+                       <div><strong>Number of steps :</strong>  Not defined  <strong>/2000</strong></div>
+                       <div><strong>Sleeping Hours :</strong>  Not defined  <strong>/8</strong></div>
                       
                       
                       
@@ -50,8 +50,8 @@
                       
                       <ng-template #elseBlock>
                          
-                          <div><strong>Number of steps :</strong>  {{patient.data[patient.data.length-1].steps}} /2000</div>
-                          <div><strong>Sleeping Hours :</strong>  {{patient.data[patient.data.length-1].sleepingHours}} /8</div>
+                          <div><strong>Number of steps :</strong>  {{patient.data[patient.data.length-1].steps}} <strong>/2000</strong></div>
+                          <div><strong>Sleeping Hours :</strong>  {{patient.data[patient.data.length-1].sleepingHours}} <strong>/8</strong></div>
                         
               
                       </ng-template>
@@ -77,26 +77,57 @@
         
             
             <div class="table-responsive">
+			 <div class="scrollit">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Emergency</th>
                     <th scope="col">Patient</th>
-                    <th scope="col">Description</th>
-                   
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col">Emergency Description</th>
+                    <th scope="col">Location</th>
                     <th scope="col">Action</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                   
                    
                    
                   </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <th>Heart rate</th>
-                  <td>Patrick</td>
+                <tr *ngFor="let msgsEmer of msgsEmergencies">
+                  <th>{{msgsEmer.name}}</th>
+                  <td>
+				  
+				   <div *ngIf="msgsEmer.heartrate>=100; then thenBlock3 else elseBlock3"> </div>
+
+                     
+                      <ng-template  #thenBlock3>
+                        
+                        
+                       <div>  High Heartrate : {{msgsEmer.heartrate}}  bpm</div>
+                      
+                      
+                      
+                      
+                      </ng-template>
+                      
+                     
+                      
+                      
+                      <ng-template #elseBlock3>
+                         
+                          
+                          <div> Low HearRate: {{msgsEmer.heartrate}}  bpm  </div>
+                        
+              
+                      </ng-template>
+				  
+				  
+				  
+				  
+				  
+				  </td>
                   
-                  <td>High </td>
+                  <td>{{msgsEmer.location | json}} </td>
                  
                   <td></td>
                   <td></td>
@@ -105,6 +136,8 @@
                 </tr>
                 </tbody>
                </table>
+			   
+			   </div>
                
             
             
