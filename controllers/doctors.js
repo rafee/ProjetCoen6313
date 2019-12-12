@@ -2,7 +2,8 @@ const Doctor=require('../models/Doctor');
 const Patient=require('../models/Patient');
 const Data=require('../models/data');
 const mongoose =require('mongoose');
-const axios = require('axios')
+const axios = require('axios');
+
 const ObjectId = mongoose.Types.ObjectId;
 
 module.exports ={
@@ -29,10 +30,7 @@ getPredictions: async(req,res,next) => {
 	
 console.log(patiInfo);
 //console.log('hello');
-   axios.post('https://6tr8ub2tq1.execute-api.us-east-2.amazonaws.com/Test/predictthyroid', {
-	"data":patInfo
-})
-.then((data) => {
+   axios.get('https://6tr8ub2tq1.execute-api.us-east-2.amazonaws.com/Test/predict?data='+patInfo).then((data) => {
 	
 	var label=data['data'];
 	var predictions=label['predictions'];
@@ -52,6 +50,64 @@ console.log(patiInfo);
 })
 
   },
+  
+  
+  SendEmergencyNotification: async(req,res,next) => {
+
+ 
+const mqtt=require('mqtt');
+const client=mqtt.connect('mqtt://broker.hivemq.com:1883');
+  msg=req.body;
+  console.log(msg);
+  position=msg['location'];
+client.on('connect', function () {
+
+// client.publish('healthcare/emergencies','{Name:'+msg['name']+'  Heart Rate:'+msg['heartrate']+'  Location:{Latitude:'+position['latitude']+',Longitude:'+position['longitude']+'}')
+
+ client.publish('healthcare/emergencies',JSON.stringify(msg))
+
+       
+  })
+
+
+
+   res.status(201).json("emergency");
+   // const doctor= await newDoctor.save();
+   
+   
+    var nodemailer = require('nodemailer');
+	
+	
+	
+var transporter = nodemailer.createTransport({
+  service: 'smtp.gmail.com',
+  port:465,
+  secure: true,
+            auth: {
+              user: 'chamseddine96@gmail.com',
+              pass: 'fadjbxodgpmbwemg'
+            }
+});
+
+var mailOptions = {
+  from: 'chamseddine96@gmail.com',
+  to: 'chamseddine96@gmail.com',
+  subject: 'Emergency',
+  text: 'tessst'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+	
+	
+  
+  },
+  
 
 newDoctor: async(req,res,next) => {
 

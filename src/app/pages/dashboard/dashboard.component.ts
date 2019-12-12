@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { IMqttMessage, MqttService } from 'ngx-mqtt';
 //import Chart from 'chart.js';
 declare const google: any;
 import {AgmCoreModule} from '@agm/core';
@@ -22,9 +24,19 @@ import {ExchangeIdService} from './exchange-id.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy  {
 
-  message:string;
+ 
+  private subscription: Subscription;
+  topicname:'/concordia/test';
+  msg: any;
+  mqttMSG:any;
+  
+  subscribedMessage:any;
+ // isConnected: boolean = false;
+ // @ViewChild('msglog', { static: true }) msglog: ElementRef;
+
+ message:string;
 
   public datasets: any;
   public data: any;
@@ -34,11 +46,73 @@ export class DashboardComponent implements OnInit {
   patients:any;
   doctor:any;
   patientData:any;
+	emergencies:any;
+	
+	patientName:any;
+	patientHeartRate:any;
+	patientLocation:any;
+	patientLat:any;
+	patientLong:any;
+	patientInfoLoc:any;
+	msgHeart:any;
+	msgsEmergencies=[];
+	jsonMessage:any;
+	ThereIsEmergency:boolean;
+	pat:any;
   title = 'My first AGM project';
-  lat = 45.4586567;
-  lng = -73.641781218;
+  lat = 45.494927;
+  lng = -73.580304;
+  
+  patiData:any;
 
-  constructor(private exId: ExchangeIdService, public dialog: MatDialog, private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private exId: ExchangeIdService, public dialog: MatDialog, private router: Router, private route: ActivatedRoute, private http: HttpClient, private _mqttService: MqttService) {
+
+ this.subscription = this._mqttService.observe('healthcare/emergencies').subscribe((message: IMqttMessage) => {
+      this.mqttMSG = message.payload.toString();
+	  //console.log(this.mqttMSG);
+	  
+	  this.subscribedMessage=message.payload.toString();
+	  
+	  
+	  
+	  this.jsonMessage=JSON.parse(this.subscribedMessage);
+	  
+	  this.msgsEmergencies.push(JSON.parse(this.subscribedMessage));
+	  
+		this.patientName=this.jsonMessage['name'];
+		this.patientHeartRate=this.jsonMessage['heartrate'];
+		this.patientLocation=this.jsonMessage['location'];
+		this.ThereIsEmergency=true;
+		if(this.patientHeartRate>=95){
+			
+			this.msgHeart='High heartrate :'+this.patientHeartRate+'bpm';
+			
+			
+			
+		}else if (this.patientHeartRate<=60){
+			
+			this.msgHeart='Low heartrate :'+this.patientHeartRate+'bpm';
+			
+		}
+	//	this.patientLat=this.patientLocation['latitude'];
+	//	this.patientLong=this.patientLocation['longitude'];
+		
+		
+		
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+    });	  
+	
+	
+  }
 
   ngOnInit() {
 
@@ -70,7 +144,19 @@ export class DashboardComponent implements OnInit {
       console.log(this.doctor);
     });
    
-    
+   this.pat={
+		"data":[{
+			"steps":0,
+			"sleepingHours":0
+		}]
+	};
+	
+	  this.patiData=[{
+		
+			"steps":0,
+			"sleepingHours":0
+		}];
+	this.ThereIsEmergency=false;
     
   }
 
@@ -98,11 +184,46 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-UpdatePatients(){
+UpdatePatients(id_Pat){
+	
+	console.log(id_Pat);
+	let id=this.route.snapshot.params['id'];
+
+    if(id==null){
+      this.exId.currentMessage.subscribe(message => id = message);
+
+    }
+
+    this.exId.changeMessage(id);
+
+    this.http.get('/doctors/'+id+'/patients/'+id_Pat).subscribe(data => {
+      this.pat=data;
+	  console.log(this.pat);
+    });
+	
+	   this.http.get('/doctors/datas/'+id_Pat).subscribe(data => {
+      this.patiData=data;
+	  console.log(this.patiData);
+    });
+	
 
 
 }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+  
+ 
 
 
+  
+ /* logMsg(message): void {
+    this.msglog.nativeElement.innerHTML += '<br><hr>' + message;
+  }
+
+  clear(): void {
+    this.msglog.nativeElement.innerHTML = '';
+  }
+*/
 }

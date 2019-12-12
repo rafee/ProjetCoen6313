@@ -26,6 +26,11 @@ router.route('/predictions/:patientId')
   
   router.route('/datas/:patientId')
   .get(DoctorsController.getPatientDataExternal);
+  
+  
+  
+   router.route('/emergencies/:patientId')
+  .post(DoctorsController.SendEmergencyNotification);
 
 
 

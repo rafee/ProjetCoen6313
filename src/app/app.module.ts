@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 //import { ChartModule } from 'angular-highcharts';
 //import { ChartsModule } from 'ng2-charts';
+import {IMqttMessage, MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -19,6 +20,7 @@ import { AgmCoreModule } from '@agm/core';
 //import { HighchartsChartComponent } from 'highcharts-angular';
 //import { ChartsModule } from 'ng2-charts';
 import {PopupModule} from 'ng2-opd-popup';
+
 import {MAT_DIALOG_DEFAULT_OPTIONS,  MatAutocompleteModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -57,7 +59,11 @@ import { UpdatePatientComponent } from './pages/update-patient/update-patient.co
 import { ThyroidInfoComponent } from './pages/thyroid-info/thyroid-info.component';
 
 declare var require: any;
-
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: 'broker.hivemq.com',
+  port: 8000,
+  path: '/mqtt'
+}
 /*export function highchartsFactory() {
 
 
@@ -78,7 +84,8 @@ declare var require: any;
     RouterModule,
     AppRoutingModule,
     MatDialogModule,
-    PopupModule.forRoot()
+    PopupModule.forRoot(),
+	MqttModule.forRoot(MQTT_SERVICE_OPTIONS)
 	//ChartsModule
 	//ChartsModule
    // ChartModule
